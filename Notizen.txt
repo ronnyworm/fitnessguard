@@ -1,0 +1,16 @@
+23:40 - 0:30
+
+Anwendung, mit der ich sehe, wie sich meine Leistung entwickelt, um rechtzeitig reagieren zu können, wenn ich merke, das sie zu schlecht wird.
+
+Es geht nicht darum, eine kontinuierliche Steigerung sehen zu wollen, sondern darum, fit zu bleiben.
+
+Ich möchte eine Entwicklung auf Zeit sehen können.
+
+SQLite Datenbank wurde bereits erzeugt
+
+Datenmodell
+Übung (ID, Name)
+Ausführung (ID, ÜbungiD, Datum, Leistung)
+
+Name
+FitnessGuard scheint es tatsächlich noch nirgends zu geben ...

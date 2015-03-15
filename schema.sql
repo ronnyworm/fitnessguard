@@ -1,0 +1,67 @@
+CREATE TABLE Muskelbereich(ID integer primary key, Name varchar(100));
+CREATE TABLE Uebung(ID interger primary key, Name varchar(100), MuskelbereichID REFERENCES Muskelbereich(ID), Erklaerung text);
+CREATE TABLE Ausfuehrung(UebungID references Uebung(ID), Datum varchar(10), Leistung varchar(20), PRIMARY KEY(UebungID, Datum));
+
+insert into Muskelbereich (Name) values ('Oberkörper');
+insert into Muskelbereich (Name) values ('Beine');
+insert into Muskelbereich (Name) values ('BauchRücken');
+
+insert into Uebung (Name, Muskelbereich, Erklaerung) values ('Klimmzug', 1, '');
+insert into Uebung (Name, Muskelbereich, Erklaerung) values ('Liegestütz Standard', 1, 'Schulterbreit');
+insert into Uebung (Name, Muskelbereich, Erklaerung) values ('Liegestütz Halbfliegend', 1, 'Fingerspitzen zu den Füßen und Hände an Taille');
+insert into Uebung (Name, Muskelbereich, Erklaerung) values ('Klimmzugtreppe', 1, 'Bei allen Treppen werden beim ersten Satz möglichst viele Wiederholungen gemacht und in den folgenden Sätzen MaxZahl / 8 weniger. So dass man nach 8 Sätzen fertig ist');
+insert into Uebung (Name, Muskelbereich, Erklaerung) values ('Liegestütztreppe', 1, '');
+insert into Uebung (Name, Muskelbereich, Erklaerung) values ('Einbein-Springen', 2, 'häufig im Takt von Musik');
+insert into Uebung (Name, Muskelbereich, Erklaerung) values ('Balancieren', 2, 'Wie Wadenheben nur ohne Heben');
+insert into Uebung (Name, Muskelbereich, Erklaerung) values ('Balancieren 20kg', 2, 'Wie Wadenheben nur ohne Heben');
+insert into Uebung (Name, Muskelbereich, Erklaerung) values ('Wadenheben', 2, 'Mit Fußballen auf eine Kante (zB Treppenstufe) stützen und dann die Ferse auf und ab bewegen');
+insert into Uebung (Name, Muskelbereich, Erklaerung) values ('Wadenheben 20kg', 2, 'Mit Fußballen auf eine Kante (zB Treppenstufe) stützen und dann die Ferse auf und ab bewegen');
+insert into Uebung (Name, Muskelbereich, Erklaerung) values ('Pistols', 2, 'Wie einbeinige Kniebeuge, aber bis fast zum Boden mit dem Hintern');
+insert into Uebung (Name, Muskelbereich, Erklaerung) values ('Kniebeuge', 2, '');
+insert into Uebung (Name, Muskelbereich, Erklaerung) values ('Ausfallschritt', 2, '');
+insert into Uebung (Name, Muskelbereich, Erklaerung) values ('Ausfallschritt 20kg', 2, '');
+insert into Uebung (Name, Muskelbereich, Erklaerung) values ('Wandsitzen', 2, '');
+insert into Uebung (Name, Muskelbereich, Erklaerung) values ('Kniebeugetreppe', 2, '');
+insert into Uebung (Name, Muskelbereich, Erklaerung) values ('Wadenhebentreppe 20kg', 2, '');
+insert into Uebung (Name, Muskelbereich, Erklaerung) values ('Pistoltreppe', 2, '');
+insert into Uebung (Name, Muskelbereich, Erklaerung) values ('Radfahren', 3, '');
+insert into Uebung (Name, Muskelbereich, Erklaerung) values ('Low Legpull', 3, 'Auf Wannenkante mit gestreckten Armen stützen und dann die angewinkelten Beine nach oben ziehen');
+insert into Uebung (Name, Muskelbereich, Erklaerung) values ('High Legpull', 3, 'Rückwärts an Tür hängen und die gestreckten Beine heben');
+insert into Uebung (Name, Muskelbereich, Erklaerung) values ('Rumpfheben', 3, 'Bauchwärts auf Bank legen, jemanden die Füße nach unten drücken lassen, dann den Oberkörper an der Bankkante nach oben und unten bewegen. Man ist bis zur Taille auf der Bank. Der Rest Richtung Kopf ist in der Luft.');
+insert into Uebung (Name, Muskelbereich, Erklaerung) values ('Rumpfheben Treppe', 3, '');
+insert into Uebung (Name, Muskelbereich, Erklaerung) values ('High Legpull Treppe', 3, '');
+insert into Uebung (Name, Muskelbereich, Erklaerung) values ('Low Legpull Treppe', 3, '');
+
+insert into Ausfuehrung(UebungID, Datum, Leistung) values ('1', '2014-10-06', '16');
+insert into Ausfuehrung(UebungID, Datum, Leistung) values ('1', '2015-02-28', '29');
+insert into Ausfuehrung(UebungID, Datum, Leistung) values ('2', '2014-10-08', '40');
+insert into Ausfuehrung(UebungID, Datum, Leistung) values ('2', '2015-02-01', '50');
+insert into Ausfuehrung(UebungID, Datum, Leistung) values ('2', '2015-03-14', '60');
+insert into Ausfuehrung(UebungID, Datum, Leistung) values ('3', '2015-02-01', '5');
+insert into Ausfuehrung(UebungID, Datum, Leistung) values ('3', '2015-03-15', '10');
+insert into Ausfuehrung(UebungID, Datum, Leistung) values ('4', '2014-11-10', '16');
+insert into Ausfuehrung(UebungID, Datum, Leistung) values ('5', '2014-11-10', '32');
+
+insert into Ausfuehrung(UebungID, Datum, Leistung) values ('6', '2014-10-10', '01:00');
+insert into Ausfuehrung(UebungID, Datum, Leistung) values ('7', '2014-10-10', '01:00');
+insert into Ausfuehrung(UebungID, Datum, Leistung) values ('8', '2014-10-10', '00:30');
+insert into Ausfuehrung(UebungID, Datum, Leistung) values ('9', '2014-10-10', '20');
+insert into Ausfuehrung(UebungID, Datum, Leistung) values ('10', '2014-10-10', '10');
+insert into Ausfuehrung(UebungID, Datum, Leistung) values ('11', '2014-10-10', '10');
+insert into Ausfuehrung(UebungID, Datum, Leistung) values ('12', '2014-10-06', '60');
+insert into Ausfuehrung(UebungID, Datum, Leistung) values ('13', '2014-10-06', '20');
+insert into Ausfuehrung(UebungID, Datum, Leistung) values ('14', '2014-11-20', '20');
+insert into Ausfuehrung(UebungID, Datum, Leistung) values ('15', '2014-10-10', '01:00');
+insert into Ausfuehrung(UebungID, Datum, Leistung) values ('16', '2014-10-10', '60');
+insert into Ausfuehrung(UebungID, Datum, Leistung) values ('17', '2014-11-20', '24');
+insert into Ausfuehrung(UebungID, Datum, Leistung) values ('18', '2014-11-20', '10');
+
+insert into Ausfuehrung(UebungID, Datum, Leistung) values ('19', '2014-06-10', '80');
+insert into Ausfuehrung(UebungID, Datum, Leistung) values ('19', '2014-10-10', '80');
+insert into Ausfuehrung(UebungID, Datum, Leistung) values ('20', '2014-10-10', '30');
+insert into Ausfuehrung(UebungID, Datum, Leistung) values ('21', '2014-10-10', '16');
+insert into Ausfuehrung(UebungID, Datum, Leistung) values ('22', '2014-10-10', '15');
+insert into Ausfuehrung(UebungID, Datum, Leistung) values ('22', '2015-02-10', '20');
+insert into Ausfuehrung(UebungID, Datum, Leistung) values ('23', '2014-11-10', '16');
+insert into Ausfuehrung(UebungID, Datum, Leistung) values ('24', '2014-11-10', '16');
+insert into Ausfuehrung(UebungID, Datum, Leistung) values ('25', '2014-11-10', '24');
