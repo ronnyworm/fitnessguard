@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @run.date %>
+</p>
+
+<p>
+  <strong>Participants:</strong>
+  <%= @run.participants %>
+</p>
+
+<p>
+  <strong>Km:</strong>
+  <%= @run.km %>
+</p>
+
+<p>
+  <strong>Duration:</strong>
+  <%= @run.duration %>
+</p>
+
+<p>
+  <strong>Max pulse:</strong>
+  <%= @run.max_pulse %>
+</p>
+
+<p>
+  <strong>Comments:</strong>
+  <%= @run.comments %>
+</p>
+
+<p>
+  <strong>Map link:</strong>
+  <%= @run.map_link %>
+</p>
+
+<%= link_to 'Edit', edit_run_path(@run) %> |
+<%= link_to 'Back', runs_path %>
