@@ -5,10 +5,10 @@
 <table>
   <thead>
     <tr>
-      <th>Datum</th>
-      <th>Km</th>
-      <th>mm:ss</th>
-      <th>Kommentare</th>
+      <th class="icon-date"></th>
+      <th class="icon-km"></th>
+      <th class="icon-duration"></th>
+      <th class="icon-comments"></th>
     </tr>
   </thead>
 
@@ -19,7 +19,7 @@
           <td><%= run.date %></td>
           <td><%= run.km %></td>
           <td><%= run.duration_mmss %></td>
-          <td><%= run.comments ? "Ja" : "" %></td>
+          <td><%= run.comments.blank? ? "" : "Ja" %></td>
         </tr>
       <% end %>
     <% end %>
