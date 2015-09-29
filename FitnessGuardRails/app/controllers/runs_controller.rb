@@ -7,6 +7,10 @@ class RunsController < ApplicationController
     @runs = Run.all
   end
 
+  def compact
+    @runs = Run.all
+  end
+
   # GET /runs/1
   # GET /runs/1.json
   def show
@@ -69,6 +73,6 @@ class RunsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def run_params
-      params.require(:run).permit(:date, :participants, :km, :duration, :max_pulse, :comments, :map_link)
+      params.require(:run).permit(:date, :participants, :km, :duration, :max_pulse, :comments, :map_link, :km_10, :duration_mmss)
     end
 end

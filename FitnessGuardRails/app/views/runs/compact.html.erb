@@ -1,0 +1,38 @@
+<h1>Läufe kompakt</h1>
+
+<%= link_to 'Neuer Lauf', new_run_path, "class" => "button" %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Datum</th>
+      <th>Km</th>
+      <th>mm:ss</th>
+      <th>Kommentare</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @runs.each do |run| %>
+      <%= link_to run do %>
+        <tr data-link="<%= run_path(run) %>">
+          <td><%= run.date %></td>
+          <td><%= run.km %></td>
+          <td><%= run.duration_mmss %></td>
+          <td><%= run.comments ? "Ja" : "" %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
+<%= link_to 'vollständige Ansicht', runs_path, "class" => "button" %>
+
+<script>
+  $("tr[data-link]").click(function() {
+    window.location = $(this).data("link")
+  })
+</script>

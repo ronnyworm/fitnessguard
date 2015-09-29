@@ -1,6 +1,8 @@
-<h1>Editing run</h1>
+<h1>Lauf bearbeiten</h1>
+
+<td><%= link_to 'Entfernen', @run, method: :delete, data: { confirm: 'Are you sure?' }, class: "button" %></td>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @run %> |
-<%= link_to 'Back', runs_path %>
+<%= link_to 'Anzeigen', @run, class: "button" %>
+<%= link_to 'Zurück', compact_runs_path, class: "button" %>

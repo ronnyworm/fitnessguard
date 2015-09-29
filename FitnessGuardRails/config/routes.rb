@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :runs
+  resources :runs do
+    collection do
+        get :compact
+    end
+  end
 
   root 'runs#index'
 

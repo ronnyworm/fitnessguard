@@ -17,7 +17,7 @@
 
 <p>
   <strong>Duration:</strong>
-  <%= @run.duration %>
+  <%= @run.duration_mmss %>
 </p>
 
 <p>
@@ -35,5 +35,5 @@
   <%= @run.map_link %>
 </p>
 
-<%= link_to 'Edit', edit_run_path(@run) %> |
-<%= link_to 'Back', runs_path %>
+<%= link_to 'Bearbeiten', edit_run_path(@run), class: "button" %>
+<%= link_to 'Zurück', compact_runs_path, class: "button" %>
