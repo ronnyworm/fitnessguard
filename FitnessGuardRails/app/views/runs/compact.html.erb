@@ -14,8 +14,8 @@
 
   <tbody>
     <% @runs.each do |run| %>
-      <%= link_to run do %>
-        <tr data-link="<%= run_path(run) %>">
+      <%= link_to run  do %>
+        <tr class = "link_row" data-link="<%= run_path(run) %>">
           <td><%= run.date %></td>
           <td><%= run.km %></td>
           <td><%= run.duration_mmss %></td>
