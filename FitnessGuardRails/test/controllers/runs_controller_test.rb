@@ -44,6 +44,6 @@ class RunsControllerTest < ActionController::TestCase
       delete :destroy, id: @run
     end
 
-    assert_redirected_to runs_path
+    assert_redirected_to compacht_runs_path
   end
 end

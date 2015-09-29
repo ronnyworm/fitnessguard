@@ -1,39 +1,51 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Date:</strong>
-  <%= @run.date %>
-</p>
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
 
-<p>
-  <strong>Participants:</strong>
-  <%= @run.participants %>
-</p>
+  <tbody>
+    <tr>
+      <td class="icon-date"></td>
+      <td><%= @run.date %></td>
+    </tr>
+    
+    <tr>
+      <td class="icon-participants"></td>
+      <td><%= @run.participants %></td>
+    </tr>
+    <tr>
+      <td class="icon-km"></td>
+      <td><%= @run.km %></td>
+    </tr>
+    <tr>
+      <td class="icon-duration"></td>
+      <td><%= @run.duration_mmss %></td>
+    </tr>
+    <tr>
+      <td class="icon-max_pulse"></td>
+      <td><%= @run.max_pulse %></td>
+    </tr>
+    <tr>
+      <td class="icon-comments"></td>
+      <td><%= raw(nl2br(h(@run.comments))) %></td>
+    </tr>
+    <tr>
+      <% if @run.map_link.blank? %>
+        <td class="icon-map_link"></td>
+        <td></td>
+      <% else %>
+        <td></td>
+        <td><%= link_to '', @run.map_link, class: "icon-map_link button", target: "_blank" %></td>
+      <% end %>
+    </tr>
+  </tbody>
+</table>
 
-<p>
-  <strong>Km:</strong>
-  <%= @run.km %>
-</p>
-
-<p>
-  <strong>Duration:</strong>
-  <%= @run.duration_mmss %>
-</p>
-
-<p>
-  <strong>Max pulse:</strong>
-  <%= @run.max_pulse %>
-</p>
-
-<p>
-  <strong>Comments:</strong>
-  <%= @run.comments %>
-</p>
-
-<p>
-  <strong>Map link:</strong>
-  <%= @run.map_link %>
-</p>
-
-<%= link_to 'Bearbeiten', edit_run_path(@run), class: "button" %>
-<%= link_to 'Zurück', compact_runs_path, class: "button" %>
+<%= link_to '', compact_runs_path, class: "button icon-back" %>
+<%= link_to '', edit_run_path(@run), class: "button icon-edit" %>
+<%= link_to '', @run, method: :delete, data: { confirm: 'Are you sure?' }, class: "button icon-delete" %>
