@@ -20,15 +20,27 @@
     </tr>
     <tr>
       <td class="icon-km"></td>
-      <td><%= @run.km %></td>
+      <td><%= @run.km_rounded %></td>
     </tr>
     <tr>
       <td class="icon-duration"></td>
-      <td><%= @run.duration_mmss %></td>
+      <td><%= @run.duration_mmcolonss %></td>
     </tr>
     <tr>
       <td class="icon-max_pulse"></td>
       <td><%= @run.max_pulse %></td>
+    </tr>
+    <tr>
+      <td class="icon-min_km"></td>
+      <td><%= @run.min_km %></td>
+    </tr>
+    <tr>
+      <td class="icon-km_h"></td>
+      <td><%= @run.km_h %></td>
+    </tr>
+    <tr>
+      <td class="icon-power"></td>
+      <td><%= @run.power %></td>
     </tr>
     <tr>
       <td class="icon-comments"></td>
@@ -39,8 +51,8 @@
         <td class="icon-map_link"></td>
         <td></td>
       <% else %>
-        <td></td>
-        <td><%= link_to '', @run.map_link, class: "icon-map_link button", target: "_blank" %></td>
+        <td class="icon-map_link"></td>
+        <td><%= link_to 'Maps ...', @run.map_link, class: "button", target: "_blank" %></td>
       <% end %>
     </tr>
   </tbody>

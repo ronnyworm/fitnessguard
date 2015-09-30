@@ -12,25 +12,37 @@
   <% end %>
 
   <div class="field">
+    <i class = "icon-date">&nbsp;</i>
     <%= f.date_select :date %>
   </div>
   <div class="field">
-    <%= f.text_field :participants, "placeholder" => "Teilnehmer", "value" => "Ronny" %>
+    <i class = "icon-participants">&nbsp;</i>
+    <% if @run.participants.blank? %>
+      <%= f.text_field :participants, "placeholder" => "Teilnehmer", "value" => "Ronny" %>
+    <% else %>
+      <%= f.text_field :participants, "placeholder" => "Teilnehmer" %>
+    <% end %>
   </div>
   <div class="field">
+    <i class = "icon-km">&nbsp;</i>
     <%= f.number_field :km_10, "placeholder" => "Kilometer * 10", "pattern" => "[0-9]*" %>
   </div>
   <div class="field">
+    <i class = "icon-duration">&nbsp;</i>
     <%= f.number_field :duration_mmss, "placeholder" => "mmss ohne :", "pattern" => "[0-9]*" %>
   </div>
   <div class="field">
+    <i class = "icon-max_pulse">&nbsp;</i>
     <%= f.number_field :max_pulse, "placeholder" => "Max Puls", "pattern" => "[0-9]*" %>
   </div>
   <div class="field">
+    <i class = "icon-comments">&nbsp;</i>
+    <br>
     <%= f.text_area :comments, cols: "30", rows: "5", placeholder: "Kommentare" %>
   </div>
   <div class="field">
-    <%= f.text_field :map_link, placeholder: "Google Maps Link" %>
+    <i class = "icon-map_link">&nbsp;</i>
+    <%= f.text_field :map_link, placeholder: "Maps Link" %>
   </div>
   <div class="actions">
     <%# Ich schaffe es nicht, hier ein Icon hinzuzufügen ...%>

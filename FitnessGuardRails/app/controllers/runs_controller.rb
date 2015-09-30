@@ -4,11 +4,11 @@ class RunsController < ApplicationController
   # GET /runs
   # GET /runs.json
   def index
-    @runs = Run.all
+    @runs = Run.order("date DESC")
   end
 
   def compact
-    @runs = Run.all
+    @runs = Run.order("date DESC")
   end
 
   # GET /runs/1

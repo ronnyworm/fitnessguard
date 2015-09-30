@@ -1,40 +1,44 @@
 <h1>Erfasste Läufe</h1>
 
-<%= link_to 'Neuer Lauf', new_run_path, "class" => "button" %>
-<!--
+<%= link_to ' Lauf', new_run_path, "class" => "button icon-new" %>
+<%= link_to 'Kompakte Ansicht', compact_runs_path, "class" => "button" %>
 <table>
   <thead>
     <tr>
-      <th>Datum</th>
-      <th>Teilnehmer</th>
-      <th>Km</th>
-      <th>Duration</th>
-      <th>Max pulse</th>
-      <th>Comments</th>
-      <th>Map link</th>
-      <th colspan="3"></th>
+      <th class="icon-date"></th>
+      <th class="icon-participants"></th>
+      <th class="icon-km"></th>
+      <th class="icon-duration"></th>
+      <th class="icon-max_pulse"></th>
+      <th class="icon-min_km"></th>
+      <th class="icon-km_h"></th>
+      <th class="icon-power"></th>
+      <th class="icon-comments"></th>
+      <th class="icon-map_link"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @runs.each do |run| %>
-      <tr>
+      <tr class = "link_row" data-link="<%= run_path(run) %>">
         <td><%= run.date %></td>
         <td><%= run.participants %></td>
-        <td><%= run.km %></td>
-        <td><%= run.duration %></td>
+        <td><%= run.km_rounded %></td>
+        <td><%= run.duration_mmcolonss %></td>
         <td><%= run.max_pulse %></td>
-        <td><%= run.comments %></td>
-        <td><%= run.map_link %></td>
-        <td><%= link_to 'Show', run %></td>
-        <td><%= link_to 'Edit', edit_run_path(run) %></td>
-        <td><%= link_to 'Destroy', run, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= run.min_km %></td>
+        <td><%= run.km_h %></td>
+        <td><%= run.power %></td>
+        <td><%= run.comments.blank? ? "" : raw("<span class = 'icon-comments'></span>") %></td>
+        <% if run.map_link.blank? %>
+          <td></td>
+        <% else %>
+          <td><%= link_to 'Maps ...', run.map_link, class: "button", target: "_blank" %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
--->
-<br>
 
 
-<%= link_to 'Kompakte Ansicht', compact_runs_path, "class" => "button" %>
+<%= javascript_include_tag 'clickable_row' %>

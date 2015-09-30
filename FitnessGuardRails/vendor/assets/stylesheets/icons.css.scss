@@ -1,10 +1,10 @@
 @font-face {
 	font-family: 'icons';
-	src:font-url('icons.eot?-smwy3t');
-	src:font-url('icons.eot?#iefix-smwy3t') format('embedded-opentype'),
-		font-url('icons.ttf?-smwy3t') format('truetype'),
-		font-url('icons.woff?-smwy3t') format('woff'),
-		font-url('icons.svg?-smwy3t#icons') format('svg');
+	src:font-url('icons.eot?iastuw');
+	src:font-url('icons.eot?iastuw#iefix') format('embedded-opentype'),
+		font-url('icons.ttf?iastuw') format('truetype'),
+		font-url('icons.woff?iastuw') format('woff'),
+		font-url('icons.svg?iastuw#icons') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -29,8 +29,17 @@
 .icon-map_link:before {
 	content: "\e60a";
 }
+.icon-min_km:before {
+	content: "\e60d";
+}
 .icon-date:before {
 	content: "\e600";
+}
+.icon-index:before {
+	content: "\e610";
+}
+.icon-compact:before {
+	content: "\e611";
 }
 .icon-back:before {
 	content: "\e605";
@@ -41,6 +50,9 @@
 .icon-participants:before {
 	content: "\e60b";
 }
+.icon-km_h:before {
+	content: "\e60e";
+}
 .icon-km:before {
 	content: "\e602";
 }
@@ -49,6 +61,9 @@
 }
 .icon-max_pulse:before {
 	content: "\e60c";
+}
+.icon-power:before {
+	content: "\e60f";
 }
 .icon-new:before {
 	content: "\e606";
@@ -62,3 +77,4 @@
 .icon-duration:before {
 	content: "\e603";
 }
+

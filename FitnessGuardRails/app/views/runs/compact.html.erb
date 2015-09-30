@@ -1,6 +1,7 @@
 <h1>Läufe kompakt</h1>
 
 <%= link_to ' Lauf', new_run_path, "class" => "button icon-new" %>
+<%= link_to 'vollständige Ansicht', runs_path, "class" => "button" %>
 
 <table>
   <thead>
@@ -8,7 +9,9 @@
       <th class="icon-date"></th>
       <th class="icon-km"></th>
       <th class="icon-duration"></th>
-      <th class="icon-comments"></th>
+      <th class="icon-min_km"></th>
+      <th class="icon-km_h"></th>
+      <th class="icon-power"></th>
     </tr>
   </thead>
 
@@ -17,22 +20,15 @@
       <%= link_to run  do %>
         <tr class = "link_row" data-link="<%= run_path(run) %>">
           <td><%= run.date %></td>
-          <td><%= run.km %></td>
-          <td><%= run.duration_mmss %></td>
-          <td><%= run.comments.blank? ? "" : "Ja" %></td>
+          <td><%= run.km_rounded %></td>
+          <td><%= run.duration_mmcolonss %></td>
+          <td><%= run.min_km %></td>
+          <td><%= run.km_h %></td>
+          <td><%= run.power %></td>
         </tr>
       <% end %>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-
-<%= link_to 'vollständige Ansicht', runs_path, "class" => "button" %>
-
-<script>
-  $("tr[data-link]").click(function() {
-    window.location = $(this).data("link")
-  })
-</script>
+<%= javascript_include_tag 'clickable_row' %>
