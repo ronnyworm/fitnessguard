@@ -6,7 +6,7 @@ namespace :icons do
   task :update, [:zipfile] => [:environment] do |t, args|
     begin
       # Set absolute zipfile path in ~/Downloads
-      zipfile = File.join(ENV['HOME'], 'Downloads', args[:zipfile].shellescape)
+      zipfile = File.join(ENV['HOME'], 'Downloads/__new', "icons.zip".shellescape)
 
       # Set some dir vars
       tmpdir = File.join(Rails.root, 'tmp', 'iconfont')
