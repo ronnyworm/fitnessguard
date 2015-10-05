@@ -2,7 +2,7 @@ class Run < ActiveRecord::Base
 
 
 	def duration_mmss
-		duration_mmcolonss.gsub(/:/, '')
+		duration_mmcolonss.gsub(/:/, '') unless duration_mmcolonss.nil?
 	end
 
 	def duration_mmcolonss
