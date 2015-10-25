@@ -32,22 +32,38 @@ class Run < ActiveRecord::Base
 	end
 
 	def km_rounded
-		km.round(1)
+		unless km.nil?
+			km.round(1)
+		else
+			km
+		end
 	end
 
 	def min_km
-		min = (duration.to_d / 60) / km
-		sec = (min - min.to_i) * 60
-		sec = "%02d" % sec.to_i
+		if not duration.nil? and not km.nil?
+			min = (duration.to_d / 60) / km
+			sec = (min - min.to_i) * 60
+			sec = "%02d" % sec.to_i
 
-		"#{min.to_i}:#{sec}"
+			"#{min.to_i}:#{sec}"
+		else
+			""
+		end
 	end
 
 	def km_h
-		(km / (duration.to_d / 3600)).round(2)
+		if not duration.nil? and not km.nil?
+			(km / (duration.to_d / 3600)).round(2)
+		else
+			""
+		end
 	end
 
 	def power
-		((km_h * 5 + km) / 10).round(3)
+		if not duration.nil? and not km.nil?
+			((km_h * 5 + km) / 10).round(3)
+		else
+			""
+		end
 	end
 end
