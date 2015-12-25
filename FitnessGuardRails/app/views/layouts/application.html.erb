@@ -5,6 +5,11 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
+<% bigiconpath = "http://fitnessguard.ronnyworm.de/assets/Arnold-cd6ec91818f6a986cbab109ec9766679.jpeg" %>
+<link rel='apple-touch-icon-precomposed' href='<%= bigiconpath %>'>
+<link rel='apple-touch-icon' href='<%= bigiconpath %>'>
+
   <%= favicon_link_tag %>
   <!-- Mobile Specific Metas -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
