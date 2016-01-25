@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'tracks' => 'runs#tracks'
+
   root 'runs#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
