@@ -1,7 +1,15 @@
+<% starting_points = StartingPoint.getAllNames %>
+<% if @track.starting_point %>
+<%   current_starting_point = @track.starting_point.region.name + " - " + @track.starting_point.name %>
+<% puts @track.starting_point.name %>
+<% else %>
+<%   current_starting_point = starting_points.first %>
+<% end %>
+
 <%= form_for(@track) do |f| %>
   <% if @track.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@track.errors.count, "error") %> prohibited this track from being saved:</h2>
+      <h2>Die Strecke konnte wegen <%= @track.errors.count %> Fehler(n) nicht gespeichert werden:</h2>
 
       <ul>
       <% @track.errors.full_messages.each do |message| %>
@@ -11,31 +19,33 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :starting_point_id %><br>
-    <%= f.number_field :starting_point_id %>
-  </div>
+  <% if starting_points and not starting_points.empty? %>
+    <div class="field">
+      <%= label_tag :starting_point_name, "Startpunkt" %><br>
+      <%= select_tag :starting_point_name, options_for_select(starting_points, current_starting_point) %>
+    </div>
+  <% end %>
+
   <div class="field">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, size: "30" %>
   </div>
   <div class="field">
-    <%= f.label :night_track %><br>
-    <%= f.check_box :night_track %>
+    <%= f.label :km, "Kilometer (z.B. 10.3)" %><br>
+    <%= f.text_field :km, size: "5" %>
   </div>
   <div class="field">
     <%= f.label :map_link %><br>
     <%= f.text_field :map_link %>
   </div>
   <div class="field">
-    <%= f.label :km %><br>
-    <%= f.text_field :km %>
+    <%= f.label :night_track %><%= f.check_box :night_track %>
   </div>
   <div class="field">
     <%= f.label :comments %><br>
-    <%= f.text_area :comments %>
+    <%= f.text_area :comments, cols: "40", rows: "3" %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Speichern" %>
   </div>
 <% end %>

@@ -4,14 +4,8 @@ class TracksController < ApplicationController
   http_basic_authenticate_with name: "ronny", password: "bangbangbang", except: [:index]
 
   # GET /tracks
-  # GET /tracks.json
   def index
     @regions = Region.all
-  end
-
-  # GET /tracks/1
-  # GET /tracks/1.json
-  def show
   end
 
   # GET /tracks/new
@@ -24,42 +18,46 @@ class TracksController < ApplicationController
   end
 
   # POST /tracks
-  # POST /tracks.json
   def create
     @track = Track.new(track_params)
 
+    sp = StartingPoint.find_by(name: params[:starting_point_name].split(" - ")[1])
+    unless sp.nil?
+      @track[:starting_point_id] = sp.id 
+    end
+
     respond_to do |format|
       if @track.save
-        format.html { redirect_to @track, notice: 'Track was successfully created.' }
-        format.json { render :show, status: :created, location: @track }
+        format.html { redirect_to tracks_url, notice: 'Track was successfully created.' }
       else
         format.html { render :new }
-        format.json { render json: @track.errors, status: :unprocessable_entity }
       end
     end
   end
 
   # PATCH/PUT /tracks/1
-  # PATCH/PUT /tracks/1.json
   def update
+    sp = StartingPoint.find_by(name: params[:starting_point_name].split(" - ")[1])
+    if sp.nil?
+      @track[:starting_point_id] = nil
+    else
+      @track[:starting_point_id] = sp.id
+    end
+
     respond_to do |format|
       if @track.update(track_params)
-        format.html { redirect_to @track, notice: 'Track was successfully updated.' }
-        format.json { render :show, status: :ok, location: @track }
+        format.html { redirect_to tracks_url, notice: 'Track was successfully updated.' }
       else
         format.html { render :edit }
-        format.json { render json: @track.errors, status: :unprocessable_entity }
       end
     end
   end
 
   # DELETE /tracks/1
-  # DELETE /tracks/1.json
   def destroy
     @track.destroy
     respond_to do |format|
       format.html { redirect_to tracks_url, notice: 'Track was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 
