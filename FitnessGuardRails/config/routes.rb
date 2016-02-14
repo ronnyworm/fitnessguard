@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
+  resources :tracks
+
   resources :runs do
     collection do
         get :compact
     end
   end
-
-  get 'tracks' => 'runs#tracks'
 
   root 'runs#index'
 

@@ -1,7 +1,7 @@
 class RunsController < ApplicationController
   before_action :set_run, only: [:show, :edit, :update, :destroy]
 
-  http_basic_authenticate_with name: "ronny", password: "bangbangbang", except: [:index, :show, :compact, :tracks]
+  http_basic_authenticate_with name: "ronny", password: "bangbangbang", except: [:index, :show, :compact]
 
   # GET /runs
   def index
@@ -10,9 +10,6 @@ class RunsController < ApplicationController
 
   def compact
     @runs = Run.order("date DESC")
-  end
-
-  def tracks
   end
 
   # GET /runs/1

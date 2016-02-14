@@ -1,0 +1,41 @@
+<%= form_for(@track) do |f| %>
+  <% if @track.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@track.errors.count, "error") %> prohibited this track from being saved:</h2>
+
+      <ul>
+      <% @track.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :starting_point_id %><br>
+    <%= f.number_field :starting_point_id %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :night_track %><br>
+    <%= f.check_box :night_track %>
+  </div>
+  <div class="field">
+    <%= f.label :map_link %><br>
+    <%= f.text_field :map_link %>
+  </div>
+  <div class="field">
+    <%= f.label :km %><br>
+    <%= f.text_field :km %>
+  </div>
+  <div class="field">
+    <%= f.label :comments %><br>
+    <%= f.text_area :comments %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
