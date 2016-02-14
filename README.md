@@ -9,7 +9,7 @@ More documentation to be added soon.
 
 
 ## Data model
-![data](FitnessGuardRails/doc/models_complete.svg)
+![data model (models)](https://raw.githubusercontent.com/ronnyworm/fitnessguard/neustart_nur_laufen/FitnessGuardRails/doc/models_complete.svg)
 
 
 
