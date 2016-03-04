@@ -15,6 +15,7 @@
  *= require_self
  *= require normalize
  *= require skeleton
+ *= require cal-heatmap
  */
 
 body{
