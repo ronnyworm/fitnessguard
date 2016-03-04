@@ -22,4 +22,12 @@ module ApplicationHelper
 
 		return ""
 	end
+
+	def true_if_mobile
+		if browser.mobile?
+			"true"
+		else
+			"false"
+		end
+	end
 end
