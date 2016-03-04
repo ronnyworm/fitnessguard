@@ -1,16 +1,24 @@
 
 
 
-
 <div style="margin-top: 10px">
 	<div id="cal-heatmap"></div>
+	<ul>
+		<li class="legend laufen">Laufen (1)</li>
+		<li class="legend bauch">Bauch- und Rückentraining (2)</li>
+		<li class="legend bein">Beintraining (3)</li>
+		<li class="legend ober">Oberkörpertraining (4)</li>
+	</ul>
 </div>
 <script type="text/javascript">
 	var cal = new CalHeatMap();
+
+	//siehe mein Ruby-Skript convert_to_epoch für die Generierung von activity.json
 	cal.init({
 		domain: "month",
 		subDomain: "x_day",
-		data: {"1456963200":1,"1456863200":1},
+		data: "activity.json",
+		itemName: ["Laufen", "Oberkörper-/Bauch-/Beintraining (siehe unten)"],
 		cellSize: 20,
 		cellPadding: 5,
 		domainGutter: 20,
@@ -20,6 +28,11 @@
 		subDomainTextFormat: "%d",
 		displayLegend: false,
 		legend: [1, 2, 3, 4],
+		legendColors: {
+		    min: "#ffffff",
+		    max: "#000000"
+		  },
+		legendOrientation: "vertical",
 		highlight: "now"
 
 	});
