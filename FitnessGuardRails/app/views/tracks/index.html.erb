@@ -1,8 +1,3 @@
-<h1><%= image_tag("Arnold.jpeg", :size => "35", :alt => "Logo") %>Strecken</h1>
-
-<%= link_to ' Lauf', new_run_path, "class" => "button icon-new" %>
-<%= link_to 'Läufe', runs_path, "class" => "button" %>
-
 <% @regions.each do |region| %>
   <h2><%= region.name %></h2>
   <% region.starting_point.each do |starting_point| %>

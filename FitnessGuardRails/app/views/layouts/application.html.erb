@@ -18,6 +18,42 @@
 </head>
 <body>
 
+<%# image_tag("Arnold.jpeg", :size => "35", :alt => "Logo", style: "display:inline-block") %>
+<div class="band navigation">
+	<nav class="primary container">
+	
+		<ul>
+			<li <%= is_active? "welcome" %>><%= link_to 'Aktivität', root_path %></li>
+			<li <%= is_active? "runs" %>><a href="#">Laufen</a>
+
+					<ul>
+						<li <%= is_active? "runs#new" %>>
+							<%= link_to new_run_path do %>
+								<span>- </span>neu
+							<% end %>
+						</li>
+
+						<li <%= is_active? "runs#index" %>>
+							<%= link_to runs_path do %>
+								<span>- </span>Erfasst - alles
+							<% end %>
+						</li>
+
+						<li <%= is_active? "runs#compact" %>>
+							<%= link_to compact_runs_path do %>
+								<span>- </span>Erfasst - kompakt
+							<% end %>
+						</li>
+					</ul>
+			</li>
+			<li <%= is_active? "tracks" %>><%= link_to 'Strecken', tracks_path %></li>
+	
+		</ul>
+	
+	</nav>
+
+</div>
+
 <%= yield %>
 
 </body>
