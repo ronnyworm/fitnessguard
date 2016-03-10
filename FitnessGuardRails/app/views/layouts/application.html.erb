@@ -24,7 +24,10 @@
 	
 		<ul>
 			<li <%= is_active? "welcome" %>><%= link_to 'Aktivität', root_path %></li>
-			<li <%= is_active? "runs" %>><a href="#">Laufen</a>
+			<li <%= is_active? "runs" %>>
+				<%= link_to compact_runs_path do %>
+					Laufen
+				<% end %>
 
 					<ul>
 						<li <%= is_active? "runs#new" %>>

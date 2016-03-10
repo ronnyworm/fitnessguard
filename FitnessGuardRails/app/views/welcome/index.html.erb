@@ -1,5 +1,11 @@
+<% if browser.mobile? %>
+	<h1>Aktivität</h1>
+<% end %>
 
-
+<div class="" style="padding-top: 10px; margin-right: 3px">
+	<a href="#" id="cal-previous" class="button">&lt;</a>
+	<a href="#" id="cal-next" class="button">&gt;</a>
+</div>
 
 <div style="margin-top: 10px">
 	<div id="cal-heatmap"></div>
@@ -22,8 +28,8 @@
 		cellSize: 20,
 		cellPadding: 5,
 		domainGutter: 20,
-		range: 4,
-		start: (new Date()).setMonth(new Date().getMonth() - 3),
+		range: <%= if_mobile 1, 4 %>,
+		start: (new Date()).setMonth(new Date().getMonth() - <%= if_mobile 0, 3 %>),
 		domainDynamicDimension: false,
 		subDomainTextFormat: "%d",
 		displayLegend: false,
@@ -33,8 +39,10 @@
 		    max: "#000000"
 		  },
 		legendOrientation: "vertical",
-		verticalOrientation: <%= true_if_mobile %>,
-		highlight: "now"
-
+		highlight: "now",
+		previousSelector: "#cal-previous",
+		nextSelector: "#cal-next",
+		minDate: new Date(2015, 7),
+		maxDate: new Date()
 	});
 </script>
