@@ -1,7 +1,7 @@
 class RunsController < ApplicationController
   before_action :set_run, only: [:show, :edit, :update, :destroy]
 
-  http_basic_authenticate_with name: "ronny", password: "bangbangbang", except: [:index, :show, :compact]
+  http_basic_authenticate_with name: "ronny", password: "bangbangbang", except: [:index, :show, :compact, :stats]
 
   # GET /runs
   def index
@@ -10,6 +10,31 @@ class RunsController < ApplicationController
 
   def compact
     @runs = Run.order("date DESC")
+  end
+
+  def stats
+    @runs = Run.order("date DESC")
+
+    @runs_ronny = Hash.new
+    @runs_tobias = Hash.new
+
+    @runs.each do |run|
+      next if run.date.strftime("%Y-%m") < (Date.today - 1.year).strftime("%Y-%m")
+
+      if run.participants.include? "Ronny"
+        @runs_ronny.store(run.date, run.power)
+
+      end
+
+      if run.participants.include? "Tobias"
+        @runs_tobias.store(run.date, run.power)
+      end
+    end
+
+    @runner_chart = [ 
+      {"name" => "Ronny", "data" => @runs_ronny}, 
+      {"name" => "Tobias", "data" => @runs_tobias}
+    ]
   end
 
   # GET /runs/1

@@ -47,6 +47,12 @@
 								<span>- </span>Erfasst - kompakt
 							<% end %>
 						</li>
+
+						<li <%= is_active? "runs#stats" %>>
+							<%= link_to stats_runs_path do %>
+								<span>- </span>Statistik
+							<% end %>
+						</li>
 					</ul>
 			</li>
 			<li <%= is_active? "tracks" %>><%= link_to 'Strecken', tracks_path %></li>
