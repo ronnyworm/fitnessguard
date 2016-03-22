@@ -1,3 +1,8 @@
 <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
 
-<%= line_chart @runner_chart, colors: ["red", "#2EFE2E"] %>
+<%= line_chart @runner_chart, colors: ["red", "#2EFE2E", "blue"], height: "500px", min: 5.0 %>
+
+<% unless browser.mobile? %>
+	<%= link_to 'alles', stats_runs_path(limit: 999), "class" => "button" %>
+	<%= link_to '1 Jahr', stats_runs_path, "class" => "button" %>
+<% end %>

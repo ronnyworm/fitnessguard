@@ -17,13 +17,27 @@ class RunsController < ApplicationController
 
     @runs_ronny = Hash.new
     @runs_tobias = Hash.new
+    @runs_markus = Hash.new
+
+    if browser.mobile?
+      limit = 2.month
+    else
+      if params[:limit].blank?
+        limit = 1.year
+      else
+        limit = params[:limit].to_i.year
+      end
+    end
 
     @runs.each do |run|
-      next if run.date.strftime("%Y-%m") < (Date.today - 1.year).strftime("%Y-%m")
+      next if run.date.strftime("%Y-%m") < (Date.today - limit).strftime("%Y-%m")
 
       if run.participants.include? "Ronny"
         @runs_ronny.store(run.date, run.power)
+      end
 
+      if run.participants.include? "Markus"
+        @runs_markus.store(run.date, run.power)
       end
 
       if run.participants.include? "Tobias"
@@ -33,7 +47,8 @@ class RunsController < ApplicationController
 
     @runner_chart = [ 
       {"name" => "Ronny", "data" => @runs_ronny}, 
-      {"name" => "Tobias", "data" => @runs_tobias}
+      {"name" => "Tobias", "data" => @runs_tobias},
+      {"name" => "Markus", "data" => @runs_markus}
     ]
   end
 
