@@ -1,9 +1,11 @@
 <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
 
+<p>Leistung wird errechnet durch:<br>(km/h * 5.0 + km) / 10.0</p>
 <%= line_chart @runner_chart, colors: ["red", "#2EFE2E", "blue"], height: "500px", min: 5.0 %>
 
 <% unless browser.mobile? %>
-	<%= link_to 'alles', stats_runs_path(limit: 999), "class" => "button" %>
+	<p>Anzeigen:</p>
+	<%= link_to 'alles', stats_runs_path(month_limit: 999), "class" => "button" %>
 	<%= link_to '1 Jahr', stats_runs_path, "class" => "button" %>
 	<%= form_tag('/runs/stats', :method => :get) do %>
 		<div class="field">
