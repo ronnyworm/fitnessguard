@@ -20,17 +20,17 @@ class RunsController < ApplicationController
     @runs_markus = Hash.new
 
     if browser.mobile?
-      limit = 2.month
+      month_limit = 2.month
     else
-      if params[:limit].blank?
-        limit = 1.year
+      if params[:month_limit].blank?
+        month_limit = 12.month
       else
-        limit = params[:limit].to_i.year
+        month_limit = (params[:month_limit].to_i - 1).month
       end
     end
 
     @runs.each do |run|
-      next if run.date.strftime("%Y-%m") < (Date.today - limit).strftime("%Y-%m")
+      next if run.date.strftime("%Y-%m") < (Date.today - month_limit).strftime("%Y-%m")
 
       if run.participants.include? "Ronny"
         @runs_ronny.store(run.date, run.power)

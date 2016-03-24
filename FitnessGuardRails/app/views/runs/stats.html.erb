@@ -5,4 +5,10 @@
 <% unless browser.mobile? %>
 	<%= link_to 'alles', stats_runs_path(limit: 999), "class" => "button" %>
 	<%= link_to '1 Jahr', stats_runs_path, "class" => "button" %>
+	<%= form_tag('/runs/stats', :method => :get) do %>
+		<div class="field">
+			<%= label_tag :month_limit, "oder: Anzahl Monate" %>
+			<%= number_field_tag :month_limit, nil, pattern: "[0-9]*", value: params[:month_limit] %>
+		</div>
+	<% end %>
 <% end %>
