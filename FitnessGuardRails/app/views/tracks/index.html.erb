@@ -1,3 +1,7 @@
+<% if browser.mobile? %>
+  <h1>Strecken</h1>
+<% end %>
+
 <% @regions.each do |region| %>
   <h2><%= region.name %></h2>
   <% region.starting_point.each do |starting_point| %>

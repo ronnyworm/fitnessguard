@@ -1,5 +1,7 @@
 <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
 
+<h1>Statistik</h1>
+
 <p>Leistung wird errechnet durch:<br>(km/h * 5.0 + km) / 10.0</p>
 <%= line_chart @runner_chart, colors: ["red", "#2EFE2E", "blue"], height: "500px", min: 5.0 %>
 

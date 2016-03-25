@@ -2,6 +2,8 @@
 	<h1>Aktivität</h1>
 <% end %>
 
+<p>Hier sind alle Trainingstage seit August 2015 aufgelistet.</p>
+
 <div class="" style="padding-top: 10px; margin-right: 3px">
 	<a href="#" id="cal-previous" class="button">&lt;</a>
 	<a href="#" id="cal-next" class="button">&gt;</a>
@@ -16,6 +18,11 @@
 		<li class="legend ober">Oberkörpertraining (4)</li>
 	</ul>
 </div>
+
+<% unless browser.mobile? %>
+	<p style="position:fixed;left:10px;bottom:5px;">Code auf <a href="https://github.com/ronnyworm/fitnessguard">Github</a></p>
+<% end %>
+
 <script type="text/javascript">
 	var cal = new CalHeatMap();
 
