@@ -1,7 +1,7 @@
 class TracksController < ApplicationController
   before_action :set_track, only: [:show, :edit, :update, :destroy]
 
-  http_basic_authenticate_with name: "ronny", password: "bangbangbang", except: [:index]
+  before_action :authenticate_user!, except: [:index]
 
   # GET /tracks
   def index
