@@ -18,7 +18,7 @@
 
   <tbody>
     <% @runs.each do |run| %>
-      <tr class = "link_row" data-link="<%= run_path(run) %>">
+      <tr style="background-color: <%= bgcolor_by_participants(run.participants) %>" class = "link_row" data-link="<%= run_path(run) %>">
         <td><%= run.date %></td>
         <td><%= run.participants %></td>
         <td><%= run.km_rounded %></td>
