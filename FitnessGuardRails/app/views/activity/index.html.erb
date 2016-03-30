@@ -19,6 +19,24 @@
 	</ul>
 </div>
 
+<% if current_user and current_user.email.include? "ronny" %>
+
+	<%= form_tag do %>
+		<p>Neu eintragen:</p>
+		<div class="field">
+			<%= date_select :date, "Datum" %>
+			<%= number_field_tag :activityname_id, nil, pattern: "[0-9]*", placeholder: "Aktivitätsnummer" %>
+			<%= submit_tag "Speichern" %>
+		</div>
+	<% end %>
+<% end %>
+
+
+
+
+
+
+
 <% unless browser.mobile? %>
 	<p style="position:fixed;left:10px;bottom:5px;">Code auf <a href="https://github.com/ronnyworm/fitnessguard">Github</a></p>
 <% end %>

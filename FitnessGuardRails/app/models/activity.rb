@@ -1,4 +1,6 @@
 class Activity < ActiveRecord::Base
+	validates :activityname_id, :inclusion => 1..4	
+
 	def self.all_with_epoch
 		result = ""
 		values = Activity.all
