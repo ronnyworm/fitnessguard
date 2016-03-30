@@ -30,8 +30,10 @@
 	cal.init({
 		domain: "month",
 		subDomain: "x_day",
-		data: "activity.json",
-		itemName: ["Laufen", "Oberkörper-/Bauch-/Beintraining (siehe unten)"],
+		data: {
+			<%= raw(Activity::all_with_epoch) %>
+		},
+		itemName: ["Laufen", "siehe unten"],
 		cellSize: 20,
 		cellPadding: 5,
 		domainGutter: 20,
