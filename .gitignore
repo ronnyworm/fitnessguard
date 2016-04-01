@@ -1,2 +1,4 @@
 *.sublime-*
 script.sql
+
+FitnessGuardRails/db/tracks.sql
