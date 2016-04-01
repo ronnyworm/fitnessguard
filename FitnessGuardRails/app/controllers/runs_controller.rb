@@ -15,9 +15,24 @@ class RunsController < ApplicationController
   def stats
     @runs = Run.order("date DESC")
 
-    @runs_ronny = Hash.new
-    @runs_tobias = Hash.new
-    @runs_markus = Hash.new
+    @people = ["Markus", "Tobias", "Ronny"]
+
+    runs_hash = Hash.new
+    count = 0
+    @people.each do |p|
+      runs_hash[p] = Hash.new
+
+      if params["show_#{p.downcase}"]
+        count += 1
+      end
+    end
+
+    if count == 0
+      @people.each do |p|
+        params["show_#{p.downcase}"] = true
+      end
+    end
+
 
     if browser.mobile?
       month_limit = 2.month
@@ -32,24 +47,21 @@ class RunsController < ApplicationController
     @runs.each do |run|
       next if run.date.strftime("%Y-%m") < (Date.today - month_limit).strftime("%Y-%m")
 
-      if run.participants.include? "Ronny"
-        @runs_ronny.store(run.date, run.power)
-      end
-
-      if run.participants.include? "Markus"
-        @runs_markus.store(run.date, run.power)
-      end
-
-      if run.participants.include? "Tobias"
-        @runs_tobias.store(run.date, run.power)
+      @people.each do |p|
+        if params["show_#{p.downcase}"] and run.participants.include? p
+          runs_hash[p].store(run.date, run.power)
+        end
       end
     end
 
-    @runner_chart = [ 
-      {"name" => "Ronny", "data" => @runs_ronny}, 
-      {"name" => "Tobias", "data" => @runs_tobias},
-      {"name" => "Markus", "data" => @runs_markus}
-    ]
+    @runner_chart = Array.new
+    @people.each do |p|
+      tmp = Hash.new
+      tmp["name"] = p
+      tmp["data"] = runs_hash[p]
+
+      @runner_chart.push(tmp)
+    end
   end
 
   # GET /runs/1

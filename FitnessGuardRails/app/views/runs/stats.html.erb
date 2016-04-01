@@ -11,8 +11,17 @@
 	<%= link_to '1 Jahr', stats_runs_path, "class" => "button" %>
 	<%= form_tag('/runs/stats', :method => :get) do %>
 		<div class="field">
+			<% @people.each do |p| %>
+				<%= label_tag "show_#{p.downcase}", p, style: "display:inline" %>
+				<%= check_box_tag "show_#{p.downcase}", nil, params["show_#{p.downcase}"] %>
+			<% end %>
+		</div>
+
+		<div class="field">
 			<%= label_tag :month_limit, "oder: Anzahl Monate" %>
 			<%= number_field_tag :month_limit, nil, pattern: "[0-9]*", value: params[:month_limit] %>
 		</div>
+
+		<%= submit_tag "OK" %>
 	<% end %>
 <% end %>
