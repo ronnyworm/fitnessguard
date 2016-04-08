@@ -7,16 +7,31 @@ class Run < ActiveRecord::Base
 
 	def duration_mmcolonss
 		if duration
-			mm = "%02d" % (duration.to_d / 60)
-			ss = "%02d" % (duration.to_i % 60)
-			"#{mm}:#{ss}"
+			if duration >= 3600
+				hh = "%02d" % (duration.to_d / 60 / 60)
+				mm = "%02d" % ((duration.to_d / 60).to_i % 60)
+				ss = "%02d" % (duration.to_i % 60)
+				"#{hh}:#{mm}:#{ss}"
+			else
+				mm = "%02d" % (duration.to_d / 60)
+				ss = "%02d" % (duration.to_i % 60)
+				"#{mm}:#{ss}"
+			end
 		end
 	end
 
 	def duration_mmss=(mmss)
 		if mmss.present?
 			begin
-				self.duration = mmss[0,2].to_i * 60 + mmss[2,4].to_i
+				if mmss.length == 6
+					self.duration = mmss[0,2].to_i * 60 * 60 + mmss[2,2].to_i * 60  + mmss[4,2].to_i
+				elsif mmss.length == 5
+					self.duration = mmss[0,1].to_i * 60 * 60 + mmss[1,2].to_i * 60  + mmss[3,2].to_i
+				elsif mmss.length == 4
+					self.duration = mmss[0,2].to_i * 60 + mmss[2,2].to_i
+				else
+					self.duration = 0
+				end
 			rescue
 				self.duration = 0
 			end
