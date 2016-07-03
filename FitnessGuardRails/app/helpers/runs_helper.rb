@@ -6,7 +6,7 @@ module RunsHelper
 	def bgcolor_by_participants(participants)
 		if participants.include? "Ronny"
 			"#FFCEC3"
-		elsif participants.include? "Markus"
+		elsif participants.include? "Marcus"
 			"#D8EAFF"
 		elsif participants.include? "Tobias"
 			"#DAFFC8"

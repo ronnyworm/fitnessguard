@@ -15,7 +15,7 @@ class RunsController < ApplicationController
   def stats
     @runs = Run.order("date DESC")
 
-    @people = ["Markus", "Tobias", "Ronny"]
+    @people = ["Marcus", "Tobias", "Ronny"]
 
     runs_hash = Hash.new
     count = 0
