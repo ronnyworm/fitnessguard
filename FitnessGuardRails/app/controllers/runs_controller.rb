@@ -1,14 +1,10 @@
 class RunsController < ApplicationController
   before_action :set_run, only: [:show, :edit, :update, :destroy]
 
-  before_action :authenticate_user!, except: [:index, :show, :compact, :stats]
+  before_action :authenticate_user!, except: [:index, :show, :stats]
 
   # GET /runs
   def index
-    @runs = Run.order("date DESC")
-  end
-
-  def compact
     @runs = Run.order("date DESC")
   end
 

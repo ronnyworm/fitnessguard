@@ -25,7 +25,7 @@
 		<ul>
 			<li <%= is_active? "welcome" %>><%= link_to 'Aktivität', root_path %></li>
 			<li <%= is_active? "runs" %>>
-				<%= link_to compact_runs_path do %>
+				<%= link_to runs_path do %>
 					Laufen
 				<% end %>
 
@@ -39,12 +39,6 @@
 						<li <%= is_active? "runs#index" %>>
 							<%= link_to runs_path do %>
 								<span>- </span>Erfasst - alles
-							<% end %>
-						</li>
-
-						<li <%= is_active? "runs#compact" %>>
-							<%= link_to compact_runs_path do %>
-								<span>- </span>Erfasst - kompakt
 							<% end %>
 						</li>
 

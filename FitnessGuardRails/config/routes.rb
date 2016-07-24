@@ -8,7 +8,6 @@ Rails.application.routes.draw do
 
   resources :runs do
     collection do
-        get :compact
         get :stats
     end
   end
