@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160330104124) do
+ActiveRecord::Schema.define(version: 20160724095646) do
 
   create_table "activities", force: true do |t|
     t.integer  "activityname_id"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20160330104124) do
     t.string   "map_link"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "starting_points", force: true do |t|
@@ -80,6 +81,7 @@ ActiveRecord::Schema.define(version: 20160330104124) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

@@ -17,11 +17,8 @@
   </div>
   <div class="field">
     <i class = "icon-participants">&nbsp;</i>
-    <% if @run.participants.blank? %>
-      <%= f.text_field :participants, "placeholder" => "Teilnehmer", "value" => "Ronny" %>
-    <% else %>
-      <%= f.text_field :participants, "placeholder" => "Teilnehmer" %>
-    <% end %>
+    <%= f.text_field :participants, "placeholder" => "weitere Teilnehmer" %>
+    <span>Du wirst automatisch als Teilnehmer hinzugefügt ;)</span>
   </div>
   <div class="field">
     <i class = "icon-km">&nbsp;</i>

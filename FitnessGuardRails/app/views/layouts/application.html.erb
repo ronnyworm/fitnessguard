@@ -56,13 +56,21 @@
 					</ul>
 			</li>
 			<li <%= is_active? "tracks" %>><%= link_to 'Strecken', tracks_path %></li>
+			<li <%= is_active? "users#index" %>><%= link_to 'Sportler', users_path %></li>
+
 			<li style="float:right">
 				<% if user_signed_in? %>
-					<%= current_user.email %><%= link_to "Logout", destroy_user_session_path, method: :delete %>
+					<%= link_to "Logout", destroy_user_session_path, method: :delete %>
 				<% else %>
 				  <%= link_to "Login", new_user_session_path  %>
 				<% end %>
 			</li>
+
+			<% if user_signed_in? %>
+				<li style="float:right">
+						<%= link_to current_user.name, user_path(current_user.id) %>
+				</li>
+			<% end %>
 	
 		</ul>
 	

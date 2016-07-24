@@ -81,9 +81,11 @@ class RunsController < ApplicationController
   def create
     @run = Run.new(run_params)
 
+    @run[:user_id] = current_user.id
+
     respond_to do |format|
       if @run.save
-        format.html { redirect_to @run, notice: 'Run was successfully created.' }
+        format.html { redirect_to @run, notice: 'Lauf wurde angelegt' }
       else
         format.html { render :new }
       end
@@ -94,7 +96,7 @@ class RunsController < ApplicationController
   def update
     respond_to do |format|
       if @run.update(run_params)
-        format.html { redirect_to @run, notice: 'Run was successfully updated.' }
+        format.html { redirect_to @run, notice: 'Lauf wurde geändert' }
       else
         format.html { render :edit }
       end
@@ -105,7 +107,7 @@ class RunsController < ApplicationController
   def destroy
     @run.destroy
     respond_to do |format|
-      format.html { redirect_to runs_url, notice: 'Run was successfully destroyed.' }
+      format.html { redirect_to runs_url, notice: 'Lauf wurde gelöscht' }
     end
   end
 

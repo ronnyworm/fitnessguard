@@ -15,7 +15,7 @@
     
     <tr>
       <td class="icon-participants"></td>
-      <td><%= @run.participants %></td>
+      <td><%= @run.all_participants %></td>
     </tr>
     <tr>
       <td class="icon-km"></td>
@@ -53,6 +53,10 @@
         <td class="icon-map_link"></td>
         <td><%= link_to 'Maps ...', @run.map_link, class: "button", target: "_blank" %></td>
       <% end %>
+    </tr>
+    <tr>
+      <td>angelegt von:</td>
+      <td><%= @run.user.name %></td>
     </tr>
   </tbody>
 </table>

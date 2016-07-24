@@ -1,0 +1,45 @@
+<h1><%= @user.name %></h1>
+
+<p>Folgende Informationen beziehen sich nur auf erfasste Läufe.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td class="icon-date"></td>
+      <td>erster Lauf</td>
+      <td>(unbekannt)</td>
+    </tr>
+    <tr>
+      <td class="icon-km"></td>
+      <td>Kilometer insgesamt</td>
+      <td><%= @user.all_time_km %></td>
+    </tr>
+    <tr>
+      <td class="icon-duration"></td>
+      <td>gelaufene Zeit insgesamt</td>
+      <td>(unbekannt)</td>
+    </tr>
+    <tr>
+      <td class="icon-power"></td>
+      <td>ø Leistung</td>
+      <td>(unbekannt)</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+<br>
+<br>
+
+
+<% if current_user and current_user.email == "mail@ronnyworm.de" %>
+  <%= link_to '', edit_user_path(@user), class: "button icon-edit" %>
+  <%= link_to '', @user, method: :delete, data: { confirm: 'Are you sure?' }, class: "button icon-delete" %>
+<% end %>

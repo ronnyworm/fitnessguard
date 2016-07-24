@@ -3,7 +3,7 @@ class ActivityController < ApplicationController
   end
 
   def add
-    return if not current_user or not current_user.email.include? "ronny"
+    return if not current_user or not current_user.email == "mail@ronnyworm.de"
 
   	y = params["date"]["Datum(1i)"].to_i
   	m = params["date"]["Datum(2i)"].to_i

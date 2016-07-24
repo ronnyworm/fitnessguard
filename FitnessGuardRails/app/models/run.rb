@@ -1,5 +1,7 @@
 class Run < ActiveRecord::Base
+	belongs_to :user
 
+	validates :user_id, presence: true
 
 	def duration_mmss
 		duration_mmcolonss.gsub(/:/, '') unless duration_mmcolonss.nil?
@@ -79,6 +81,18 @@ class Run < ActiveRecord::Base
 			((km_h * 5 + km) / 10).round(3)
 		else
 			""
+		end
+	end
+
+	def all_participants
+		if self.user.nil?
+			return participants
+		end
+
+		if participants.include? self.user.name
+			participants
+		else
+			participants + " " + self.user.name
 		end
 	end
 end
