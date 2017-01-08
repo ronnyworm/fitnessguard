@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  root 'activity#index'
-  post '/' => 'activity#add'
+  root 'runs#index'
 
   resources :tracks
 
