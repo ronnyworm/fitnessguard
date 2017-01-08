@@ -56,7 +56,7 @@
     </tr>
     <tr>
       <td>angelegt von:</td>
-      <td><%= @run.user.name %></td>
+      <td><%= @run.user != nil ? @run.user.name : "Admin"  %></td>
     </tr>
   </tbody>
 </table>
